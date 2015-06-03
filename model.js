@@ -11,7 +11,7 @@ var g=0.5; //growth
 var prob=0.01; //probability of connection to form
 var stoprad=10 // to multiple by rad for stopping point
 var dist=4 // to multiple by rad for stopping point
-var skew=1 // skewness in y direction
+var skew=2 // skewness in y direction
 
 // set default values for input
 $("#growth").val(g);
