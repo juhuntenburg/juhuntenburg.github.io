@@ -13,13 +13,14 @@
 	</audio>
 
     <div id="input-div" style="position: absolute; box-shadow: 3px 3px 5px 5px #ccc; padding: 10px; background-color:rgba(255,255,255,0.7); z-index: 10">
-        <h5>parameters</h5>
+        <h4>Parameters</h4>
         <table  style="font:14px Garamond Serif">
-            <tr><td>growth rate</td> <td><input style="font:12px Garamond" type="text" id="growth" maxlength="3" size="3"/></td></tr>
-            <tr><td>initial nodes</td> <td><input style="font:12px Garamond" type="text" id="nodes" maxlength="3" size="3" /></td></tr>
-            <tr><td>p connection</td> <td><input style="font:12px Garamond" type="text" id="prob" maxlength="3" size="3"/></td></tr>
-            <tr><td>max distance</td> <td><input style="font:12px Garamond" type="text" id="dist" maxlength="3" size="3"/></td></tr>
-            <tr><td>skew</td> <td><input style="font:12px Garamond" type="text" id="skew" maxlength="3" size="3"/></td></tr>
+            <tr><td>growth rate</td> <td><input style="font:12px Garamond" type="text" id="growth" maxlength="4" size="4"/></td></tr>
+            <tr><td>initial nodes</td> <td><input style="font:12px Garamond" type="text" id="nodes" maxlength="4" size="4" /></td></tr>
+            <tr><td>p connection</td> <td><input style="font:12px Garamond" type="text" id="prob" maxlength="4" size="4"/></td></tr>
+            <tr><td>max distance</td> <td><input style="font:12px Garamond" type="text" id="dist" maxlength="4" size="4"/></td></tr>
+            <tr><td>skew</td> <td><input style="font:12px Garamond" type="text" id="skew" maxlength="4" size="4"/></td></tr>
+            <tr><td>young mod</td> <td><input style="font:12px Garamond" type="text" id="young" maxlength="4" size="4"/></td></tr>
             <tr><td></td><td></td></tr>
             <tr><td></td><td></td></tr>
             <tr>
@@ -28,12 +29,12 @@
             </tr>
             <tr><td><button id="cont" style="font:12px Garamond">continue</button></td><td></td></tr>
         </table>
-        <h5>stats</h5>
+        <h4>Stats</h4>
         <table  style="font:14px Garamond Serif">
-            <tr><td>cluster</td><td><input type="text" id="clustNum" style="font:12px Garamond" maxlength="3" size="3"/></td></tr>
+            <tr><td>cluster</td><td><input type="text" id="nclust" style="font:12px Garamond" maxlength="3" size="3"/></td></tr>
             <tr>
                 <td><button id="compute" style="font:12px Garamond">compute</button></td>
-                <td><button id="viz" style="font:12px Garamond">vis</button></td>
+                <td><button id="vis" style="font:12px Garamond">vis</button></td>
             </tr>
             <tr><td><button id="download" style="font:12px Garamond">download</button></td><td></td></tr>
             <tr><td></td><td></td></tr>
@@ -41,41 +42,43 @@
 		</table>
         <table>
             <tr><span id="stats" style="font:12px Garamond"></span></tr>
-        </table>       
+        </table>
     </div>
 
     <div id="svg-div">
-    	<svg id="svg" width="1000" height="400"> 
+    	<svg id="svg" width="1150" height="600">
         </svg>
     </div>
 
-    <div id="matrix-div" style="position:relative; top:90px; width:45%; height:400px; box-shadow: 3px 3px 5px 5px #ccc; padding: 10px; background-color:rgba(255,255,255,0.7);z-index="></div>
+    <div id="matrix-div" style="position: absolute; right: 10px; top:10px; width:25%; height:45%; padding: 10px; background-color:rgba(255,255,255,0); z-index: 10"></div>
+	<div id="force-div" style="position: absolute; right: 10px; top: 50%; width:25%; height:45%; padding: 10px; background-color:rgba(255,255,255,0); z-index: 10"></div>
 
 
-    <div id="doc-div" style="position:absolute; right:10px; top:0px; height:900px; width:35%; font:14px Garamond;   text-align: justify; text-justify:inter-word; overflow:auto; box-shadow: 3px 3px 5px 5px #ccc; padding:20px; background-color:rgba(255,255,255,0.7); z-index: 20">
-        <h3 style="text-align:left">Effects of growth, folding &amp regionalization in a simple model of cortical connectivity
-        <h4>To do</h4>
+    <div id="doc-div" style="position:relative; top:50%; height:100%; width:97%; font:14px Garamond;   text-align: justify; text-justify:inter-word; overflow:auto; box-shadow: 3px 3px 5px 5px #ccc; padding:20px; background-color:rgba(255,255,255,0.7); z-index: 20">
+         <i>to do</i>
          <ul>
-            <li>initial dots are not equally spaced on ellipsoid</li>
-            <li>the way resting length is derived depends on equal spacing</li>
-            <li>integrate this version with master (network metrics)</li>
-            <li><i>next:</i> elasticity and plasticity</li>
-        </ul> 
+            <li>elasticity, plasticity</li>
+            <li>fix network measured for large no. of nodes</li>
+            <li>use gui library</li>
+            <li>source text from google doc</li>
+        </ul>
+        <h2 style="text-align:left">Influence of cortical growth and folding on the development of cortico-cortical connections</h2>
         <h4>Background</h4>
-        <p>The human brain has been described in terms of a network with distinct features such as a small-world topology, modularity, the existence of hubs and a rich-club (rev in Bullmore &amp Sporns 2009, 2012). Complementary to the topological description, a characteristic spatial layout of cortical networks and their relationship to anatomical landmarks is emerging from connectivity based parcellation studies (e.g. Yeo et al., 2011). However, most of these studies investigate the adult human brain and little is known about factors leading to this particular organization throughout brain development. Existing studies of connectivity in infants and even preterm neonates indicate the presence of major topological and spatial features resembling the adult brain already at this stage of development (rev in Dubois, Kostovic &amp Judas 2015). Therefore, it is plausible to assume that the characteristic connectivity patterns start emerging during prenatal development, long before term. Investigating this period empirically in humans is difficult and does not allow for experimental manipulations. Computational modelling presents an alternative approach, making it possible to study the interaction of different factors during early brain development and their effect on the resulting connectivity patterns.</p>
+        <p>The human brain has been described in terms of a network with distinct features such as a small-world topology, modularity, the existence of hubs and a rich-club (reviewed in Bullmore &amp Sporns 2009, 2012). Complementary to the topological description, a characteristic spatial layout of cortical networks and their relationship to anatomical landmarks is emerging from connectivity based parcellation studies (e.g. Yeo et al., 2011). However, most of these studies investigate the adult human brain and little is known about factors leading to this particular organization throughout brain development. Existing studies of connectivity in infants and even preterm neonates indicate the early presence of major topological and spatial features resembling the adult brain (reviewed in Dubois, Kostovic &amp Judas 2015). Therefore, it is plausible to assume that the characteristic connectivity patterns start emerging during prenatal development. Investigating this period empirically in humans is difficult and does not allow for experimental manipulations. Computational modelling presents an alternative approach, making it possible to study the interaction of different factors during early brain development and their effect on the resulting connectivity patterns.</p>
         <h4>Idea</h4>
-        <p>In previous studies, a simple model of the cortical surface was used to simulate mechanical forces during cortical growth. It was demonstrated that basic elastoplastic properties of the model are sufficient to produce folding patterns sharing main characteristics with those observed in the brain (Toro&Burnod 2005, Toro 2012). The goal here is to extend the morphogenetic model to simulate the development of cortico-cortical connections in interaction with concomitant cortical growth, folding &amp regionalization. The wiring rule is distance based with a probabilistic element. At each time step of the progressing cortical growth the euclidian distance between all nodes on the surface is evaluated and if the distance is below a given threshold, a connection is established with a given probability. The length of the established connections increases as the model grows, however, new connections will still only be established between proximal nodes. Importantly, as the model grows new nodes are established on the surface to keep the node density approximately stable. This means, that 1) earlier forming connections should on average be longer than those being established later in time 2) earlier forming nodes should on average have more connections than later forming ones. Both hypotheses have been proven to largely hold on the level of single neurons in the neuronal network of C.elegans (Varier &amp Kaiser, 2011) and a computational model thereof (Lim et al., 2015).</p>
-        <p>The assumption of distance dependent wiring is derived from observations in real brain networks where connection length follows a gamma shaped distribution, with shorter connections being much more abundant than longer ones (e.g. Schuez &amp Miller 2002, Young 1994, Scannell 1994, Kaiser et al., 2009). Under this rule it is intuitive that growth and folding of the modelled cortical surface will impact on the resulting connectivity pattern. An issue that needs to be addressed once the surface starts folding is to ensure that only trajectories through the inner space of the model are considered when establishing new connections, so that no anatomically implausible connections through sulci will appear.</p>
-        <p>Another factor that is likely to play a role during the development of cortico-cortical connections is the early regionalization of the cortex into areas of distinct architectonic differentiation (Goldman-Rakic, 1980, Rakic 1988, 1991, Pandya &amp Sanides, 1973). Gradients or step changes in the mechanical properties of the surface are an option to model the impact of structural differences in distinct areas on cortical folding and thereby on the resulting connectivity patterns (Toro &amp Burnod, 2005). This relationship, however, can also be viewed from another angle, in that folding patterns resulting from morphogenetic mechanisms might establish anisotropies in mechanical stress or influence morphogen diffusion, thus being a cause rather than an effect of cortical regionalization (Foubet &amp Toro, 2015). </p>
-        <p>Regionalization can alternatively be conceptualized in the temporal domain, based on evidence indicating that different cortical regions show different developmental time courses (Rakic 2002). It is conceivable, that areas developing simultaneously will be more likely to form connections. This is further supported by the finding that most long distance connections in C.elegans were shown to occur between neurons born within the same narrow time window (Varier &amp Kaiser). Previous approaches to model overlapping temporal windows as a factor increasing the likelihood of establishing a connection have shown encouraging results on the level of single neurons (Kaiser &amp Hilgetag, 2007, Lim et al., 2015).  Possibly, mechanical and temporal approaches to model the impact of early regionalization on connectivity patterns can be combined.
+        <p>In a morphogenetic model of cortical folding it was previously demonstrated that growth of a cortical surface with elastoplastic properties is sufficient to produce folding patterns sharing main characteristics with those observed in the brain (Toro&Burnod 2005, Toro 2012). The goal here is to extend the morphogenetic model to simulate the development of cortico-cortical connections during cortical growth and folding. The goal is to advance the model into 3D space. </p>
+        <p><i>Distance dependent wiring</i></p>
+        <p>Connection length in real neural networks follows a gamma shaped distribution, with shorter connections being much more abundant than longer ones (e.g. Schuez &amp Miller 2002, Young 1994, Scannell 1994, Kaiser et al., 2009). In line with these observations, connections in the model are established according to a distance based wiring rule with a probabilistic element. At each time step of the progressing cortical growth the euclidian distance between all nodes on the surface is evaluated and if the distance is below a given threshold, a connection is established with a given probability. Under this rule it is intuitive that growth and folding of the cortical surface will impact on the resulting connectivity pattern. An issue that needs to be addressed once the surface starts folding is to ensure that only trajectories through the inner space of the model are considered when establishing new connections, so that no anatomically implausible connections through sulci will appear.</p>
+        <p>The length of already established connections increases as the model grows. However, new connections will always be established between proximal nodes only. As the model grows new nodes appear on the surface to keep the node density approximately stable. This means, that 1) earlier forming connections should on average be longer than those being established later in time 2) earlier forming nodes should on average have more connections than later forming ones. Both hypotheses are in agreement with findings on connectivity in the neuronal network of C.elegans (Varier &amp Kaiser, 2011) and a computational model thereof (Lim et al., 2015). In contrast to those studies, the current approach operates on the scale of cortical systems, instead of single neurons, and explicitly integrates a geometric description of the developing network. </p>
+        <p><i>Regionalization through mechanical properties</i></p>
+        <p>Another factor likely playing a role during the development of cortico-cortical connections is the early regionalization of the cortex into areas of distinct architectonic differentiation (Goldman-Rakic, 1980, Rakic 1988, 1991, Pandya &amp Sanides, 1973). Gradients or step changes in the mechanical properties of the surface are an option to model the impact of areal differences on cortical folding (Toro &amp Burnod, 2005), which in turn should influence resulting connectivity patterns. This relationship can also be viewed from another angle, in that folding patterns resulting from morphogenetic mechanisms might establish anisotropies in mechanical stress or influence morphogen diffusion, thus being a cause rather than an effect of cortical regionalization (Foubet &amp Toro, 2015).</p>
+        <p><i>Developmental time windows</i></p>
+        <p>Regionalization can alternatively be conceptualized in the temporal domain, based on evidence that different cortical regions show different developmental time courses (Rakic 2002). It is conceivable, that areas developing simultaneously will be more likely to form connections. This is supported by the finding that most long distance connections in C.elegans were occur between neurons born within the same narrow time window (Varier &amp Kaiser, 2011). Previous approaches to model overlapping developmental windows as a factor that favours connectivity were able to reproduce empirically observed network properties (Kaiser &amp Hilgetag, 2007, Lim et al., 2015). Temporally phased growth has also been proposed as a mechanism for mechanically driven cortical convolution (Xu 2010). Differences in the onset or duration of growth of the different areas of the surface and / or their connectional development therefore present another way of implementing early regionalization.
         </p>
-        <p>Once a working implementation of the model in 2D exists first analyses can be performed (see below). It is however the goal to advance the model into 3D space.</p>
-        <h4>Analyses &amp data</h4>
-        <p>Data: Jessica Dubois, Ferret, C.elegans</p>
+        <h4>Analyses</h4>
         <h4>Possible extensions</h4>
-        <p>From here, different extensions are conceivable. In the basic implementation all connections are straight lines. This has several implications: 1) with increasing folding the possibility to establish a straight connection between two nodes that completely lies within the model rapdily decreases, 2) existing connections do not deform along with the surface, and overall 3) no information about the actual trajectory of the connection in space is provided. Moreover, the model is deterministic, i.e. a connection either exists or does not exist. To address these potential limitations a different approach to modelling the connections could be to describe the entire space within the model in terms of small volume elements with diffusion tensors. Connections are then established depending on the shortest path through these elements and therefore not necessarily straight. If a connection is established, the tensors of all elements it passes are updated according to the direction of the connection. In the end, the actual network is derived using a tract tracing algorithm on the tensors. This would represent a more probabilistic approach and provide geometrically meaningful connectivity.</p>
+        <p>Different extensions are conceivable. In the basic implementation all connections are straight lines. This has several implications: 1) with increasing folding the possibility to establish a straight connection between two nodes that completely lies within the model rapdily decreases, 2) existing connections do not deform along with the surface, and overall 3) no information about the actual trajectory of the connection in space is provided. Moreover, the model is deterministic, i.e. a connection either exists or does not exist. To address these potential limitations a different approach to modelling the connections could be to describe the entire space within the model in terms of small volume elements with diffusion tensors. Connections are then established depending on the shortest path through these elements and therefore not necessarily straight. If a connection is established, the tensors of all elements it passes are updated according to the direction of the connection. In the end, the actual network is derived using a tract tracing algorithm on the tensors. This would represent a more probabilistic approach and provide geometrically meaningful connectivity.</p>
         <p>Furthermore, the network derived from the model might be used as a structural basis to simulate functional dynamics and interactions of connected areas. In that case, it would be possible to observe how the pattern of functional networks changes in the evolving model. Here, an even more complex growth model, integrating the increasing fibre myelination and their impact on signal transduction, could provide another important perspective on the development of functional networks.</p>
     </div>
     <script src="model.js"></script>
 </body>
-
